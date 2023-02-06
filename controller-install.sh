@@ -1,6 +1,6 @@
 # SSH-Keys
 if [ ! -f $HOME/.ssh/id_rsa ]; then
-  ssh-keygen -q
+  ssh-keygen
 fi
 
 # Set hostname
