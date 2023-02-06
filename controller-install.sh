@@ -21,6 +21,7 @@ chpl -o hello $CHPL_HOME/examples/hello6-taskpar-dist.chpl
 export GASNET_SPAWNFN=S
 
 echo 'export GASNET_SSH_SERVERS="host1 host2 host3 ..."'
+echo './hello -nl 2'
 
 # IP Address
 echo "Subnet #: "  
