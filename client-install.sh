@@ -1,13 +1,14 @@
 # SSH-Keys
-if [ ! -f $HOME/.ssh/id_rsa ]
-then
+if [ ! -f $HOME/.ssh/id_rsa ]; then
   ssh-keygen -q
 fi
 
 # Set hostname
-echo "Hostname: "  
-read host_name  
-sudo hostnamectl set-hostname $host_name
+echo "Node #: "  
+read node
+if [ $HOSTNAME != node$node ]; then
+  sudo hostnamectl set-hostname node$node
+fi
 
 #Chapel Setup
 wget https://github.com/chapel-lang/chapel/releases/download/1.29.0/chapel-1.29.0.tar.gz
