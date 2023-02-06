@@ -13,3 +13,10 @@ Beowulf-Cluster Documentation
 - [ ] Test benchmark
 - [ ] Make weather prediction application
 - [ ] Have fully running weather prediction
+
+
+## Usage
+
+### client-install.sh
+
+### controller-install.sh
