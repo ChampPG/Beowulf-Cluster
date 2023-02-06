@@ -13,7 +13,8 @@ wget https://github.com/chapel-lang/chapel/releases/download/1.29.0/chapel-1.29.
 tar xzf chapel-1.29.0.tar.gz
 cd chapel-1.29.0
 source util/setchplenv.bash
-sudo make
+./configure
+sudo make install
 ./util/printchplenv
 export CHPL_COMM=gasnet
 sudo make
