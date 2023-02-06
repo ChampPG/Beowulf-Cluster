@@ -35,4 +35,4 @@ echo './hello -nl 2'
 # IP Address
 echo "Subnet #: "  
 read subnet  
-ip addr | grep /$subnet | awk {'print $1'}
+ip addr | grep /$subnet | awk {'print $2'}
