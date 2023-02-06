@@ -6,7 +6,7 @@ fi
 # Set hostname
 echo "Node #: "  
 read node
-if [ $HOSTNAME != node$node ]; then
+if [ "$HOSTNAME" != node$node ]; then
   sudo hostnamectl set-hostname node$node
 fi
 
