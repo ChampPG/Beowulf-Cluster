@@ -20,6 +20,18 @@ Beowulf-Cluster Documentation
 * Have a sudo user
 * 
 
+## Environment
+
+### Controller
+
+* OS: Debian 11
+* 
+
+### Nodes
+
+* OS: Debian 11
+* Number of Nodes: 5
+
 ## Usage
 
 ### client-install.sh
