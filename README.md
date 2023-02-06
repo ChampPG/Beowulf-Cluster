@@ -16,21 +16,28 @@ Beowulf-Cluster Documentation
 
 ## Prerequisites
 
-* Updated Debian machine
-* Have a sudo user
-* 
+### Networking
+* 6 Static IP's
+
+### Devices
+* 6 Updated Debian machine
+
+### OS Config
+* sudo user
 
 ## Environment
 
 ### Controller
 
 * OS: Debian 11
-* 
+* Number of Nodes: 1
+* Hosts file to contain nodes
 
 ### Nodes
 
 * OS: Debian 11
 * Number of Nodes: 5
+* Host file to contain other nodes and controller
 
 ## Usage
 
