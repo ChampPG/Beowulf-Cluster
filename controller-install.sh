@@ -20,17 +20,15 @@ tar xzf chapel-1.29.0.tar.gz
 fi
 cd $HOME/chapel-1.29.0
 source util/setchplenv.bash
-./configure
-sudo make install
-./util/printchplenv
-export CHPL_COMM=gasnet
-cd $CHPL_HOME
 sudo make
-chpl -o hello $CHPL_HOME/examples/hello6-taskpar-dist.chpl
-export GASNET_SPAWNFN=S
 
-echo 'export GASNET_SSH_SERVERS="host1 host2 host3 ..."'
-echo './hello -nl 2'
+#export CHPL_COMM=gasnet
+#cd $CHPL_HOME
+#sudo make
+#chpl -o hello $CHPL_HOME/examples/hello6-taskpar-dist.chpl
+#export GASNET_SPAWNFN=S
+#echo 'export GASNET_SSH_SERVERS="host1 host2 host3 ..."'
+#echo './hello -nl 2'
 
 # IP Address
 echo "Subnet #: "  
