@@ -43,12 +43,23 @@ Beowulf-Cluster Documentation
 
 ### client-install.sh
 
+1. Be in the a users home directory.
+2. `wget https://raw.githubusercontent.com/ChampPG/Beowulf-Cluster/main/client-install.sh`
+3. `chmod +x client-install.sh`
+4. `./client-install.sh`
+  * If you already have ssh-keys generated This won't pop up
+  * Configure SSH-Keys how you would like
+  * Enter
+
+![image](https://user-images.githubusercontent.com/71086240/216885081-5d06b142-e1be-4c0c-9ff0-d5ee041f5b13.png)
+
 ### controller-install.sh
 
 1. Be in the a users home directory.
 2. `wget https://raw.githubusercontent.com/ChampPG/Beowulf-Cluster/main/controller-install.sh`
 3. `chmod +x controller-install.sh`
 4. `./controller-install.sh`
+  * If you already have ssh-keys generated This won't pop up
   * Configure SSH-Keys how you would like
   * Enter
 
