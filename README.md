@@ -65,4 +65,4 @@ Beowulf-Cluster Documentation
 
 ![image](https://user-images.githubusercontent.com/71086240/216885081-5d06b142-e1be-4c0c-9ff0-d5ee041f5b13.png)
 
-4. Now script will update debian and install Chapel Prerequisites.
+5. Now script will update debian and install Chapel Prerequisites.
