@@ -4,7 +4,7 @@ if [ ! -f $HOME/.ssh/id_rsa ]; then
 fi
 
 # Set hostname
-if [ $HOSTNAME != controller ]; then
+if [ "$HOSTNAME" != controller ]; then
   sudo hostnamectl set-hostname controller
 fi
 
