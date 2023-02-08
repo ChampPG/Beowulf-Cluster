@@ -1,5 +1,14 @@
 # Beowulf-Cluster
-Beowulf-Cluster Documentation
+Made by: Paul Gleason, Matt Compton
+
+1. [Project Description](#project-description)
+2. [Goals](#goals)
+3. [Prerequisites](#prerequisites)
+4. [Script Setup](#script-setup)
+5. [Manual Setup](#manual-setup)
+
+## Project Description
+This project is to hold our scripts and configs to configure multilocal computing using Chapel.
 
 ## Goals
 * Learn more about Chapel and parallel computing 
@@ -39,7 +48,7 @@ Beowulf-Cluster Documentation
 * Number of Nodes: 5
 * Host file to contain other nodes and controller
 
-## Use Scripts (WIP)
+## Script Setup
 
 ### controller-install.sh
 
