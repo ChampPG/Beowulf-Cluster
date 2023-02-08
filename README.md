@@ -74,7 +74,6 @@ Beowulf-Cluster Documentation
 ### Client
 
 1. `sudo hostnamectl set-hostname node<XX>` - Rename machine 
-
 2. Configure /etc/hosts
 
 ![image](https://user-images.githubusercontent.com/71086240/217401785-763cd770-c948-4895-8aed-d5876997927c.png)
@@ -101,3 +100,29 @@ Beowulf-Cluster Documentation
 17. `export GASNET_SSH_SERVERS="controller node1 node2 ..."` - Set GASNET_SSH_SERVER | Test without doing this step first as well. For this step make sure not to put the current node in the list
 
 ### Controller
+
+1. `sudo hostnamectl set-hostname controller` - Rename machine 
+2. Configure /etc/hosts
+
+![image](https://user-images.githubusercontent.com/71086240/217402608-5dee0338-084b-4912-9baf-43ea75c8c6d5.png)
+
+3. `ssh-keygen` - Generate SSH keys 
+4. Install Prerequisites
+   ```
+   sudo apt-get update
+   sudo apt-get install gcc g++ m4 perl python3 python3-dev bash make mawk git pkg-config cmake
+   sudo apt-get install llvm-dev llvm clang libclang-dev libclang-cpp-dev libedit-dev
+   ```
+5. `wget https://github.com/chapel-lang/chapel/releases/download/1.29.0/chapel-1.29.0.tar.gz` - wget Chapel-1.29.0.tar.gz
+6. `tar xzf chapel-1.29.0.tar.gz` - untar ball Chapel-1.29.0 
+7. `cd chapel-1.29.0` - Enter Chapel dir 
+8. `source util/setchplenv.bash` - Set source 
+9. `sudo make` - Compiler Chapel | Will take some time...
+10. `./util/printchplenv` - Show current Chapel environment 
+11. `export CHPL_HOME=/home/<user>/chapel-1.29.0.tar.gz` - Set CHPL_HOME
+12. `export CHPL_COMM=gasnet` - Set CHPL_COMM 
+13. `cd $CHPL_HOME` - Enter $CHPL_HOME 
+14. `make` - Recompile
+15. `chpl -o hello $CHPL_HOME/examples/hello6-taskpar-dist.chpl` - Make hello program
+16. `export GASNET_SPAWNFN=S` - Set GASNET_SPAWNFN
+17. `export GASNET_SSH_SERVERS="node1 node2 ..."` - Set GASNET_SSH_SERVER 
