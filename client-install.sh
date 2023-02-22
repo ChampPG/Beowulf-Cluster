@@ -18,6 +18,9 @@ source util/setchplenv.bash
 sudo make
 ./util/printchplenv
 
+export CHPL_COMM=gasnet:
+sudo make
+
 # IP Address
 echo "Subnet #: "  
 read subnet  
