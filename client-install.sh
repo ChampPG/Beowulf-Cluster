@@ -7,7 +7,7 @@ if [ $0 = "yes" ]; then
   # Set hostname
   echo "Node #: "  
   read node
-  if [ "$HOSTNAME" != node$node ]; then
+  if [ "$HOSTNAME" != beowulf$node ]; then
     sudo hostnamectl set-hostname node$node
   fi
 
