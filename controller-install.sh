@@ -30,7 +30,7 @@ if [ $0 = "yes" ]; then
   export CHPL_COMM=gasnet
   sudo make
 
-  export GASNET_SPAWNFN=S:
+  export GASNET_SPAWNFN=S
   export GASNET_SSH_SERVERS="beowulf01 beowulf02 beowulf03 beowulf04 beowulf05":
 
   ./hello -nl 5
@@ -47,6 +47,7 @@ if [ $0 = "yes" ]; then
   echo "Subnet #: "  
   read subnet  
   ip addr | grep /$subnet | awk {'print $2'}
+  
 elif [ $0 = "no" ]; then
 
   cd $HOME/chapel-1.29.0
@@ -54,8 +55,9 @@ elif [ $0 = "no" ]; then
   export CHPL_COMM=gasnet
   sudo make
 
-  export GASNET_SPAWNFN=S:
+  export GASNET_SPAWNFN=S
   export GASNET_SSH_SERVERS="beowulf01 beowulf02 beowulf03 beowulf04 beowulf05":
+  
 else
   echo "usage is wrong ./controller-install [yes|no]"
   
