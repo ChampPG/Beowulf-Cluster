@@ -17,7 +17,7 @@ if [ $0 = "yes" ]; then
   sudo apt-get install llvm-dev llvm clang libclang-dev libclang-cpp-dev libedit-dev -y
 
   # Main Install
-  if [ ! -f $HOME/chapel-1.29.0.tar.gz]; then
+  if [ ! -f $HOME/chapel-1.29.0.tar.gz ]; then
     cd $HOME
     wget https://github.com/chapel-lang/chapel/releases/download/1.29.0/chapel-1.29.0.tar.gz
     tar xzf chapel-1.29.0.tar.gz
