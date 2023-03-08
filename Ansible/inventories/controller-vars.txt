@@ -1,0 +1,5 @@
+controller]
+192.168.1.10 hostname=controller
+
+[controller:vars]
+ansible_python_interpreter=/usr/bin/python3
