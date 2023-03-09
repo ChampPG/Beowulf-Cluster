@@ -1,0 +1,7 @@
+- name: client setup
+  hosts: nodes
+  become: true
+  tasks:
+  - name: Setting up 
+  
+
