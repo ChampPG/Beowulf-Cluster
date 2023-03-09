@@ -12,16 +12,32 @@ $wulfhome = /home/wulf
 $network = 192.168.1
 $nameserver = 192.168.1.1
 $gateway = 192.168.1.1
-
+$subnet = 255.255.255.0
 
 # Configuring Networking
 echo "${yel} === Configure Networking === ${end}\n"
 
-ip addr
+ip -br -c link show
+
 read -p "Enter main adapter you would like to use: " adapter
 read -p "Enter last octect of IP Address" ip
 
-#TODO Add Network configurination
+#TODO Make sure networking config is good
+
+FILE="/etc/network/interfaces"
+/bin/cat << EOM > $FILE
+# The loopback network interface
+auto lo
+iface lo inet loopback
+ 
+# The primary network interface
+auto $adapter
+iface $adapter inet static
+ address $network.$ip
+ netmask $subnet
+ gateway $gateway
+ dns-nameservers $nameserver
+EOM
 
 systemctl restart networking.service
 systemctl status networking.service
