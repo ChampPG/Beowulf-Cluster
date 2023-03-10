@@ -8,11 +8,12 @@ end=$'\e[0m'
 # End Color
 
 # Set Vars:
-$wulfhome = /home/wulf
-$network = 192.168.1
-$nameserver = 192.168.1.1
-$gateway = 192.168.1.1
-$subnet = 255.255.255.0
+wulfhome = "/home/wulf"
+network = 192.168.1
+nameserver = 192.168.1.1
+gateway = 192.168.1.1
+subnet = 255.255.255.0
+networkfile= "/etc/network/interfaces"
 
 # Configuring Networking
 echo "${yel} === Configure Networking === ${end}\n"
@@ -24,8 +25,7 @@ read -p "Enter last octect of IP Address" ip
 
 #TODO Make sure networking config is good
 
-FILE="/etc/network/interfaces"
-/bin/cat << EOM > $FILE
+/bin/cat << EOM > $networkfile
 # The loopback network interface
 auto lo
 iface lo inet loopback
