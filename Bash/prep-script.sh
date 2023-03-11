@@ -14,6 +14,37 @@ echo ""
 echo "${grn} === Machine Updated and Upgraded === ${end}"
 echo ""
 
+echo "${yel} === Setting up openssh-server Machine === ${end}"
+apt-get install -y open-vm-tools openssh-server
+cat /dev/null > /var/log/wtmp 
+cat /dev/null > /var/log/lastlog 
+rm -rf /tmp/*
+rm -rf /var/tmp/*
+rm -f /etc/ssh/ssh_host*
+rm -f /etc/udev/rules.d/70-persistent-net.rules
+cat << EOL | sudo tee /etc/rc.local
+#!/bin/sh -e
+test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
+exit 0
+EOL
+echo ""
+echo "${grn} === openssh-server is setup === ${end}"
+echo ""
+
+echo "${yel} === Cleaning up Machine === ${end}"
+apt-get clean
+history -c
+history -w
+chmod +x /etc/rc.local
+systemctl stop apt-daily-upgrade.timer
+systemctl disable apt-daily-upgrade.timer
+systemctl stop apt-daily.timer
+systemctl disable apt-daily.timer
+sudo apt autoremove -y
+echo ""
+echo "${grn} === Machine Cleaned up === ${end}"
+echo ""
+
 read -p "Is this a virtual machine (y/n): " vm
 
 if [ vm = y ]; then
