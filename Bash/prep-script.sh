@@ -20,7 +20,7 @@ echo ""
 echo "${yel} === Creating wulf User === ${end}"
 # Add user where the first argument is the password
 pass=$(perl -e 'print crypt($ARGV[0], "password")' $1)
-useradd -m "$username" -p "$pass" 
+useradd -m -p "$pass" "wulf"
 echo ""
 echo "${grn} === wulf User Created === ${end}"
 echo ""
