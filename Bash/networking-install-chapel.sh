@@ -8,12 +8,28 @@ end=$'\e[0m'
 # End Color
 
 # Set Vars:
-wulfhome = "/home/wulf"
+username = "wulf"
+userhome = "/home/$username"
 network = 192.168.1
 nameserver = 192.168.1.1
 gateway = 192.168.1.1
 subnet = 255.255.255.0
-networkfile= "/etc/network/interfaces"
+networkfile = "/etc/network/interfaces"
+
+echo "${yel} === Creating $username User === ${end}"
+# Add user where the first argument is the password
+pass=$(perl -e 'print crypt($ARGV[0], "password")' $1)
+useradd -m -p "$pass" "$username"
+echo ""
+echo "${grn} === $username User Created === ${end}"
+echo ""
+
+echo "${yel} === Adding $username User to Sudo Group === ${end}"
+# Add user where the first argument is the password
+usermod -aG sudo $username
+echo ""
+echo "${grn} === Added wulf User to Sudo Group === ${end}"
+echo ""
 
 # Configuring Networking
 echo "${yel} === Configure Networking === ${end}\n"
@@ -56,9 +72,9 @@ echo ""
 
 # Main Install
 echo "${yel} === Installing Chapel === ${end}\n"
-if [ ! -f $wulfhome/chapel-1.29.0.tar.gz ]; then
-    cd $wulfhome
-    wget https://github.com/chapel-lang/chapel/releases/download/1.29.0/chapel-1.29.0.tar.gz
+if [ ! -f $userhome/chapel-1.29.0.tar.gz ]; then
+    cd $userhome
+    wget "https://github.com/chapel-lang/chapel/releases/download/1.29.0/chapel-1.29.0.tar.gz"
     tar xzf chapel-1.29.0.tar.gz
 fi
 echo ""

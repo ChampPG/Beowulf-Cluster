@@ -7,31 +7,11 @@ yel=$'\e[1;33m'
 end=$'\e[0m'
 # End Color
 
-# Set Vars:
-$username = "wulf"
-$userhome = "/home/$username"
-
-
 echo "${yel} === Updating and Upgrading Machine === ${end}"
 apt update -y
 apt upgrade -y
 echo ""
 echo "${grn} === Machine Updated and Upgraded === ${end}"
-echo ""
-
-echo "${yel} === Creating $username User === ${end}"
-# Add user where the first argument is the password
-pass=$(perl -e 'print crypt($ARGV[0], "password")' $1)
-useradd -m -p "$pass" "$username"
-echo ""
-echo "${grn} === $username User Created === ${end}"
-echo ""
-
-echo "${yel} === Adding $username User to Sudo Group === ${end}"
-# Add user where the first argument is the password
-usermod -aG sudo $username
-echo ""
-echo "${grn} === Added wulf User to Sudo Group === ${end}"
 echo ""
 
 read -p "Is this a virtual machine (y/n): " vm
