@@ -24,6 +24,13 @@ echo ""
 echo "${grn} === wulf User Created === ${end}\n"
 echo ""
 
+echo "${yel} === Adding wulf User to Sudo Group === ${end}\n"
+# Add user where the first argument is the password
+usermod -aG sudo wulf
+echo ""
+echo "${grn} === Added wulf User to Sudo Group === ${end}\n"
+echo ""
+
 read -p "Is this a virtual machine (y/n): " vm
 
 if [ vm = y ]; then
