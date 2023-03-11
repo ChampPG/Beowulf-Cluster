@@ -44,7 +44,8 @@ echo ""
 
 read -p "Is this a virtual machine (y/n): " vm
 
-if [ vm = y ]; then
+if [ $vm = 'y' ]
+then
     echo ""
     echo "${yel} === Removing Machine ID for DHCP === ${yel}"
     echo -n > /etc/machine-id
