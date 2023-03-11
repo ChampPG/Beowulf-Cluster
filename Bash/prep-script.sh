@@ -10,7 +10,6 @@ end=$'\e[0m'
 echo "${yel} === Updating and Upgrading Machine === ${end}"
 apt update -y
 apt upgrade -y
-echo ""
 echo "${grn} === Machine Updated and Upgraded === ${end}"
 echo ""
 
@@ -27,7 +26,6 @@ cat << EOL | sudo tee /etc/rc.local
 test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
 exit 0
 EOL
-echo ""
 echo "${grn} === openssh-server is setup === ${end}"
 echo ""
 
@@ -41,7 +39,6 @@ systemctl disable apt-daily-upgrade.timer
 systemctl stop apt-daily.timer
 systemctl disable apt-daily.timer
 sudo apt autoremove -y
-echo ""
 echo "${grn} === Machine Cleaned up === ${end}"
 echo ""
 
