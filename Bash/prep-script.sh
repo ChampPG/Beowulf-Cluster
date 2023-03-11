@@ -10,37 +10,38 @@ end=$'\e[0m'
 # Set Vars:
 $wulfhome = /home/wulf
 
-echo "${yel} === Updating and Upgrading Machine === ${end}\n"
+echo "${yel} === Updating and Upgrading Machine === ${end}"
 apt update -y
 apt upgrade -y
 echo ""
-echo "${grn} === Machine Updated and Upgraded === ${end}\n"
+echo "${grn} === Machine Updated and Upgraded === ${end}"
 echo ""
 
-echo "${yel} === Creating wulf User === ${end}\n"
+echo "${yel} === Creating wulf User === ${end}"
 # Add user where the first argument is the password
-adduser -m -p $1 wulf
+pass=$(perl -e 'print crypt($ARGV[0], "password")' $1)
+useradd -m -p "$pass" "$username"
 echo ""
-echo "${grn} === wulf User Created === ${end}\n"
+echo "${grn} === wulf User Created === ${end}"
 echo ""
 
-echo "${yel} === Adding wulf User to Sudo Group === ${end}\n"
+echo "${yel} === Adding wulf User to Sudo Group === ${end}"
 # Add user where the first argument is the password
 usermod -aG sudo wulf
 echo ""
-echo "${grn} === Added wulf User to Sudo Group === ${end}\n"
+echo "${grn} === Added wulf User to Sudo Group === ${end}"
 echo ""
 
 read -p "Is this a virtual machine (y/n): " vm
 
 if [ vm = y ]; then
     echo ""
-    echo "${yel} === Removing Machine ID for DHCP === ${yel}\n"
+    echo "${yel} === Removing Machine ID for DHCP === ${yel}"
     echo -n > /etc/machine-id
     sudo rm /var/lib/dbus/machine-id
     sudo ln -s /etc/machine-id /var/lib/dbus/machine-id
     echo "remove git repo and then issue a shutdown - h now"
     echo ""
-    echo "${grn} === Machine ID Removed === ${end}\n"
+    echo "${grn} === Machine ID Removed === ${end}"
     echo ""
 fi
