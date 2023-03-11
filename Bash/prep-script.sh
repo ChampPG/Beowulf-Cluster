@@ -51,8 +51,10 @@ then
     echo -n > /etc/machine-id
     sudo rm /var/lib/dbus/machine-id
     sudo ln -s /etc/machine-id /var/lib/dbus/machine-id
-    echo "remove git repo and then issue a shutdown - h now"
     echo ""
     echo "${grn} === Machine ID Removed === ${end}"
     echo ""
 fi
+
+read -p "Press enter when ready to shutdown"
+shutdown -h now
