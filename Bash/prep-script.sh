@@ -8,7 +8,9 @@ end=$'\e[0m'
 # End Color
 
 # Set Vars:
-$wulfhome = /home/wulf
+$username = "wulf"
+$userhome = "/home/$username"
+
 
 echo "${yel} === Updating and Upgrading Machine === ${end}"
 apt update -y
@@ -17,17 +19,17 @@ echo ""
 echo "${grn} === Machine Updated and Upgraded === ${end}"
 echo ""
 
-echo "${yel} === Creating wulf User === ${end}"
+echo "${yel} === Creating $username User === ${end}"
 # Add user where the first argument is the password
 pass=$(perl -e 'print crypt($ARGV[0], "password")' $1)
-useradd -m -p "$pass" "wulf"
+useradd -m -p "$pass" "$username"
 echo ""
-echo "${grn} === wulf User Created === ${end}"
+echo "${grn} === $username User Created === ${end}"
 echo ""
 
-echo "${yel} === Adding wulf User to Sudo Group === ${end}"
+echo "${yel} === Adding $username User to Sudo Group === ${end}"
 # Add user where the first argument is the password
-usermod -aG sudo wulf
+usermod -aG sudo $username
 echo ""
 echo "${grn} === Added wulf User to Sudo Group === ${end}"
 echo ""
