@@ -31,9 +31,9 @@ echo ""
 echo "${grn} === Added wulf User to Sudo Group === ${end}"
 echo ""
 
-read -p "Do you want to setup networking [y/n]: " network
+read -p "Do you want to setup networking [y/n]: " networking
 
-if [ $network = 'y' ]
+if [ $networking = 'y' ]
 then
 # Configuring Networking
 echo "${yel} === Configure Networking === ${end}\n"
