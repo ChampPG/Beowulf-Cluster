@@ -19,6 +19,7 @@ networkfile="/etc/network/interfaces"
 echo "${yel} === Creating $username User === ${end}"
 # Add user where the first argument is the password
 useradd -m "$username"
+echo "$username:$1" | chpasswd
 echo ""
 echo "${grn} === $username User Created === ${end}"
 echo ""
@@ -35,7 +36,7 @@ read -p "Do you want to setup networking [y/n]: " networking
 if [ $networking = 'y' ]
 then
 # Configuring Networking
-echo "${yel} === Configure Networking === ${end}\n"
+echo "${yel} === Configure Networking === ${end}"
 
 ip -br -c link show
 
@@ -64,17 +65,17 @@ EOM
 systemctl restart networking.service
 systemctl status networking.service
 echo ""
-echo "${grn} === Networking Configured === ${end}\n"
+echo "${grn} === Networking Configured === ${end}"
 echo ""
 fi
 
 # Install Chapel Dependencies
-echo "${yel} === Installing Chapel Dependencies === ${end}\n"
+echo "${yel} === Installing Chapel Dependencies === ${end}"
 
 sudo apt-get install gcc g++ m4 perl python3 python3-dev bash make mawk git pkg-config cmake -y
 sudo apt-get install llvm-dev llvm clang libclang-dev libclang-cpp-dev libedit-dev -y
 echo ""
-echo "${grn} === Chapel Dependencies Installed === ${end}\n"
+echo "${grn} === Chapel Dependencies Installed === ${end}"
 echo ""
 
 # Main Install
@@ -85,5 +86,5 @@ if [ ! -f $userhome/chapel-1.29.0.tar.gz ]; then
     tar xzf chapel-1.29.0.tar.gz
 fi
 echo ""
-echo "${grn} === Chapel Installed === ${end}\n"
+echo "${grn} === Chapel Installed === ${end}"
 echo ""
