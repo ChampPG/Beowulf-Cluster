@@ -19,7 +19,7 @@ networkfile="/etc/network/interfaces"
 echo "${yel} === Creating $username User === ${end}"
 # Add user where the first argument is the password
 useradd -m "$username"
-echo "$username:$1" | chpasswd
+echo "$username:$1" | sudo chpasswd
 echo ""
 echo "${grn} === $username User Created === ${end}"
 echo ""
