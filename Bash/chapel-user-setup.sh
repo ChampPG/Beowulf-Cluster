@@ -48,11 +48,11 @@ cat ~/.ansible.cfg
 echo ""
 fi
 
-read "What node number is this [0x]: " nodenum
+read "What node number is this [x]: " nodenum
 
-echo "${yel}=== Set Hostname to node$nodenum ===${end}"
+echo "${yel}=== Set Hostname to node0$nodenum ===${end}"
 hostnamectl set-hostname "node$nodenum"
-echo "${grn}=== Hostname Set to node$nodenum ===${end}"
+echo "${grn}=== Hostname Set to node0$nodenum ===${end}"
 
 echo "${yel} === Creating $username User === ${end}"
 # Add user where the first argument is the password
