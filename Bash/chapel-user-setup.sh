@@ -31,38 +31,43 @@ echo ""
 echo "${grn} === Added wulf User to Sudo Group === ${end}"
 echo ""
 
-# Configuring Networking
-echo "${yel} === Configure Networking === ${end}\n"
+read -p "Do you want to setup networking [y/n]: " network
 
-ip -br -c link show
+if [ $network = y ];
+then
+ # Configuring Networking
+ echo "${yel} === Configure Networking === ${end}\n"
 
-read -p "Enter main adapter you would like to use: " adapter
-read -p "Enter last octect of IP Address" ip
+ ip -br -c link show
 
-#TODO Make sure networking config is good
+ read -p "Enter main adapter you would like to use: " adapter
+ read -p "Enter last octect of IP Address" ip
 
-/bin/cat << EOM > $networkfile
+ #TODO Make sure networking config is good
 
-source /etc/network/interfaces.d/*
+ /bin/cat << EOM > $networkfile
 
-# The loopback network interface
-auto lo
-iface lo inet loopback
- 
-# The primary network interface
-auto $adapter
-iface $adapter inet static
- address $network.$ip
- netmask $subnet
- gateway $gateway
- dns-nameservers $nameserver
-EOM
+ source /etc/network/interfaces.d/*
 
-systemctl restart networking.service
-systemctl status networking.service
-echo ""
-echo "${grn} === Networking Configured === ${end}\n"
-echo ""
+ # The loopback network interface
+ auto lo
+ iface lo inet loopback
+
+ # The primary network interface
+ auto $adapter
+ iface $adapter inet static
+  address $network.$ip
+  netmask $subnet
+  gateway $gateway
+  dns-nameservers $nameserver
+ EOM
+
+ systemctl restart networking.service
+ systemctl status networking.service
+ echo ""
+ echo "${grn} === Networking Configured === ${end}\n"
+ echo ""
+fi
 
 # Install Chapel Dependencies
 echo "${yel} === Installing Chapel Dependencies === ${end}\n"
