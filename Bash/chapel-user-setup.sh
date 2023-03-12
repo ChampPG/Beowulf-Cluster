@@ -42,6 +42,9 @@ read -p "Enter last octect of IP Address" ip
 #TODO Make sure networking config is good
 
 /bin/cat << EOM > $networkfile
+
+source /etc/network/interfaces.d/*
+
 # The loopback network interface
 auto lo
 iface lo inet loopback
