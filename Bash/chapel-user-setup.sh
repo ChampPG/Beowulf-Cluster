@@ -16,6 +16,44 @@ gateway=192.168.1.1
 subnet=255.255.255.0
 networkfile="/etc/network/interfaces"
 
+
+read "Is this device the controller [y/n]" controllervar
+
+if [ $contollervar = y ]; then
+
+echo "${yel}=== Set Hostname to controller ===${end}"
+hostnamectl set-hostname "controller"
+echo "${grn}=== Hostname Set to controller ===${end}"
+
+echo "${yel}=== Installing Ansible ===${end}"
+sudo apt install sshpass python3-paramiko git -y
+sudo apt-add-repository ppa:ansible/ansible -y
+sudo apt update -y
+sudo apt install ansible -y
+echo ""
+
+echo "${yel}=== Setting up Config ===${end}"
+cat >> ~/.ansible.cfg < EOF                                                               
+[defaults]
+host_key_checking = false
+EOF
+echo ""
+
+echo "${grn}=== Ansible Version ===${end}"
+ansible --version
+echo ""
+
+echo "${grn}=== Config Check Below ===${end}"
+cat ~/.ansible.cfg
+echo ""
+fi
+
+read "What node number is this [0x]: " nodenum
+
+echo "${yel}=== Set Hostname to node$nodenum ===${end}"
+hostnamectl set-hostname "node$nodenum"
+echo "${grn}=== Hostname Set to node$nodenum ===${end}"
+
 echo "${yel} === Creating $username User === ${end}"
 # Add user where the first argument is the password
 useradd -m "$username"
