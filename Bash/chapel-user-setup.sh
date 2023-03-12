@@ -79,7 +79,7 @@ echo "${grn} === Chapel Dependencies Installed === ${end}"
 echo ""
 
 # Main Install
-echo "${yel} === Installing Chapel === ${end}\n"
+echo "${yel} === Installing Chapel === ${end}"
 if [ ! -f $userhome/chapel-1.29.0.tar.gz ]; then
     cd $userhome
     wget "https://github.com/chapel-lang/chapel/releases/download/1.29.0/chapel-1.29.0.tar.gz"
