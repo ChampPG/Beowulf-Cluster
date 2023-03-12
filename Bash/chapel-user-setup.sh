@@ -35,15 +35,15 @@ read -p "Do you want to setup networking [y/n]: " network
 
 if [ $network = 'y' ]
 then
- # Configuring Networking
- echo "${yel} === Configure Networking === ${end}\n"
+# Configuring Networking
+echo "${yel} === Configure Networking === ${end}\n"
 
- ip -br -c link show
+ip -br -c link show
 
- read -p "Enter main adapter you would like to use: " adapter
- read -p "Enter last octect of IP Address" ip
+read -p "Enter main adapter you would like to use: " adapter
+read -p "Enter last octect of IP Address" ip
 
- #TODO Make sure networking config is good
+#TODO Make sure networking config is good
 
 /bin/cat > $networkfile << EOM
 
@@ -62,11 +62,11 @@ iface $adapter inet static
  dns-nameservers $nameserver
 EOM
 
- systemctl restart networking.service
- systemctl status networking.service
- echo ""
- echo "${grn} === Networking Configured === ${end}\n"
- echo ""
+systemctl restart networking.service
+systemctl status networking.service
+echo ""
+echo "${grn} === Networking Configured === ${end}\n"
+echo ""
 fi
 
 # Install Chapel Dependencies
