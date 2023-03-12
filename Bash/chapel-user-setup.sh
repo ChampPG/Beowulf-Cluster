@@ -8,13 +8,13 @@ end=$'\e[0m'
 # End Color
 
 # Set Vars:
-username = "wulf"
-userhome = "/home/$username"
-network = 192.168.1
-nameserver = 192.168.1.1
-gateway = 192.168.1.1
-subnet = 255.255.255.0
-networkfile = "/etc/network/interfaces"
+username="wulf"
+userhome="/home/$username"
+network=192.168.1
+nameserver=192.168.1.1
+gateway=192.168.1.1
+subnet=255.255.255.0
+networkfile="/etc/network/interfaces"
 
 echo "${yel} === Creating $username User === ${end}"
 # Add user where the first argument is the password
