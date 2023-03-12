@@ -33,7 +33,7 @@ echo ""
 
 read -p "Do you want to setup networking [y/n]: " network
 
-if [ $network = y ];
+if [ $network = 'y' ]
 then
  # Configuring Networking
  echo "${yel} === Configure Networking === ${end}\n"
