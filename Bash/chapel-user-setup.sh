@@ -18,8 +18,7 @@ networkfile = "/etc/network/interfaces"
 
 echo "${yel} === Creating $username User === ${end}"
 # Add user where the first argument is the password
-pass=$(perl -e 'print crypt($ARGV[0], "password")' $1)
-useradd -m -p "$pass" "$username"
+useradd -m "$username"
 echo ""
 echo "${grn} === $username User Created === ${end}"
 echo ""
