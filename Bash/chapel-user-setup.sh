@@ -45,22 +45,22 @@ then
 
  #TODO Make sure networking config is good
 
- /bin/cat << EOM > $networkfile
+/bin/cat > $networkfile << EOM
 
- source /etc/network/interfaces.d/*
+source /etc/network/interfaces.d/*
 
- # The loopback network interface
- auto lo
- iface lo inet loopback
+# The loopback network interface
+auto lo
+iface lo inet loopback
 
- # The primary network interface
- auto $adapter
- iface $adapter inet static
-  address $network.$ip
-  netmask $subnet
-  gateway $gateway
-  dns-nameservers $nameserver
- EOM
+# The primary network interface
+auto $adapter
+iface $adapter inet static
+ address $network.$ip
+ netmask $subnet
+ gateway $gateway
+ dns-nameservers $nameserver
+EOM
 
  systemctl restart networking.service
  systemctl status networking.service
